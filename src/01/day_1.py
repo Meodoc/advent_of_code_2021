@@ -3,19 +3,11 @@ from funcy import lmap
 
 
 def part_a(data: list):
-    cnt = 0
-    for i in range(len(data) - 1):
-        if data[i + 1] > data[i]:
-            cnt += 1
-    return cnt
+    return sum(x[1] > x[0] for x in zip(data, data[1:]))
 
 
 def part_b(data: list):
-    cnt = 0
-    for i in range(len(data) - 3):
-        if sum(data[i + 1:i + 4]) > sum(data[i:i + 3]):
-            cnt += 1
-    return cnt
+    return sum(x[1] > x[0] for x in zip(data, data[3:]))
 
 
 def load(data: str):
@@ -23,5 +15,5 @@ def load(data: str):
 
 
 puzzle = Puzzle(year=2021, day=1)
-# puzzle.answer_a = part_a(load(puzzle.input_data))
-# puzzle.answer_b = part_b(load(puzzle.input_data))
+# puzzle.answer_a = part_a(load(puzzle.input_data))  # 1292
+# puzzle.answer_b = part_b(load(puzzle.input_data))  # 1262
