@@ -18,7 +18,7 @@ def part_b(data: np.ndarray):
 
 
 def draw_lines(data: np.ndarray, diagram: np.ndarray, diagonal: bool):
-    for x, y in data[0]:
+    for x, y in data:
         x_diff, y_diff = abs(x[0] - x[1]), abs(y[0] - y[1])
         if not diagonal and x_diff != 0 and y_diff != 0:
             continue
