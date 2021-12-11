@@ -13,5 +13,6 @@ My Python implementations of the AoC 2021 challenge 🎄
 | [Day 5: Hydrothermal Venture](https://adventofcode.com/2021/day/5)    | [day5.py](src/05/day_5.py) |
 | [Day 6: Lanternfish](https://adventofcode.com/2021/day/6)             | [day6.py](src/06/day_6.py) |
 | [Day 7: The Treachery of Whales](https://adventofcode.com/2021/day/7) | [day7.py](src/07/day_7.py) |
+| [Day 9: Smoke Basin](https://adventofcode.com/2021/day/9)             | [day9.py](src/09/day_9.py) |
 
 
