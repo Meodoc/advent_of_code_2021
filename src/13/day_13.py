@@ -2,6 +2,7 @@ from aocd.models import Puzzle
 from funcy import lmap
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def part_a(paper: np.ndarray, instructions: list):
@@ -11,7 +12,8 @@ def part_a(paper: np.ndarray, instructions: list):
 
 def part_b(paper: np.ndarray, instructions: list):
     paper = fold_paper(paper, instructions)
-    print(paper)
+    plt.imshow(paper)
+    plt.show()
 
 
 def fold_paper(paper: np.ndarray, instructions: list, only_first=False):
