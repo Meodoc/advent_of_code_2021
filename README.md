@@ -18,5 +18,6 @@ My Python implementations of the AoC 2021 challenge 🎄
 | [Day 12: Passage Pathing](https://adventofcode.com/2021/day/12)         | [day12.py](src/12/day_12.py) |
 | [Day 13: Transparent Origami](https://adventofcode.com/2021/day/13)     | [day13.py](src/13/day_13.py) |
 | [Day 14: Extended Polymerization](https://adventofcode.com/2021/day/14) | [day14.py](src/14/day_14.py) |
+| [Day 15: Chiton](https://adventofcode.com/2021/day/15)                  | [day15.py](src/15/day_15.py) |
 
 
