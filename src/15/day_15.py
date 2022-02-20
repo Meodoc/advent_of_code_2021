@@ -52,3 +52,9 @@ print(ans_a)
 ans_b = part_b(load(puzzle.input_data, full=True))
 print(ans_b)
 # puzzle.answer_b = ans_b  # 2993
+
+# with open ('test.in') as f:
+#     test = f.read()
+#
+# ans = part_a(load(test, full=True))
+# print(ans)
