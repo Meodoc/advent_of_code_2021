@@ -22,7 +22,7 @@ def part_a(target: Target):
     tries = product(range(min_, max_), range(min_, max_))
     max_ys = set()
     for try_ in tries:
-        if max_y := sim_launch(try_[0], try_[1], target):
+        if (max_y := sim_launch(try_[0], try_[1], target)) is not None:
             max_ys.add(max_y)
 
     return max(max_ys)
