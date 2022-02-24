@@ -1,5 +1,5 @@
 from aocd.models import Puzzle
-from math import ceil, log, prod
+from math import ceil, prod
 
 
 class Packet:

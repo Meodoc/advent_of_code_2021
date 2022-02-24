@@ -19,4 +19,5 @@ My Python implementations of the AoC 2021 challenge 🎄
 | [Day 13: Transparent Origami](https://adventofcode.com/2021/day/13)     | [day13.py](src/13/day_13.py) |
 | [Day 14: Extended Polymerization](https://adventofcode.com/2021/day/14) | [day14.py](src/14/day_14.py) |
 | [Day 15: Chiton](https://adventofcode.com/2021/day/15)                  | [day15.py](src/15/day_15.py) |
+| [Day 16: Packet Decoder](https://adventofcode.com/2021/day/16)          | [day16.py](src/16/day_16.py) |
 | [Day 17: Trick Shot](https://adventofcode.com/2021/day/17)              | [day17.py](src/17/day_17.py) |
