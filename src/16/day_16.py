@@ -1,7 +1,5 @@
 from aocd.models import Puzzle
-from typing import Union
-from dataclasses import dataclass
-from math import ceil, log
+from math import ceil, log, prod
 
 
 class Packet:
@@ -9,8 +7,9 @@ class Packet:
         self.version = version
         self.type_id = type_id
         self.length = length
+        self.value = ValueError()
 
-    def sum_version_numbers(self):
+    def sum_version_numbers(self) -> int:
         raise NotImplementedError()
 
 
@@ -19,7 +18,7 @@ class LiteralPacket(Packet):
         super().__init__(version, type_id, length)
         self.value = value
 
-    def sum_version_numbers(self):
+    def sum_version_numbers(self) -> int:
         return self.version
 
 
@@ -27,16 +26,40 @@ class OperatorPacket(Packet):
     def __init__(self, version: int, type_id: int, length: int, sub_packets: list):
         super().__init__(version, type_id, length)
         self.sub_packets = sub_packets
+        self.value = self._calculate_value()
 
-    def sum_version_numbers(self):
+    def sum_version_numbers(self) -> int:
         sum_ = self.version
         for sub_packet in self.sub_packets:
             sum_ += sub_packet.sum_version_numbers()
         return sum_
 
+    def _calculate_value(self) -> int:
+        if self.type_id == 0:
+            return sum(sub_packet.value for sub_packet in self.sub_packets)
+        if self.type_id == 1:
+            return prod(sub_packet.value for sub_packet in self.sub_packets)
+        if self.type_id == 2:
+            return min(sub_packet.value for sub_packet in self.sub_packets)
+        if self.type_id == 3:
+            return max(sub_packet.value for sub_packet in self.sub_packets)
+        if self.type_id == 5:
+            assert (len(self.sub_packets) == 2)
+            return 1 if self.sub_packets[0].value > self.sub_packets[1].value else 0
+        if self.type_id == 6:
+            assert (len(self.sub_packets) == 2)
+            return 1 if self.sub_packets[0].value < self.sub_packets[1].value else 0
+        if self.type_id == 7:
+            assert (len(self.sub_packets) == 2)
+            return 1 if self.sub_packets[0].value == self.sub_packets[1].value else 0
+
 
 def part_a(packet: Packet):
     return packet.sum_version_numbers()
+
+
+def part_b(packet: Packet):
+    return packet.value
 
 
 def parse(data: str):
@@ -49,16 +72,15 @@ def parse(data: str):
 
         # extract the literal value
         lit_val = ''
-        consumed_len = 0
+        consumed_len = 6
         for i in range(0, padded_literal_len - 5, 5):
             group_header = int(literal[i])
             lit_val += literal[i + 1: i + 5]
             if group_header == 0:
-                consumed_len = i + 5
+                consumed_len += i + 5
                 break
 
         lit_val = int(lit_val, 2)
-        consumed_len += 6
 
         return LiteralPacket(version, type_id, consumed_len, lit_val)
 
@@ -109,12 +131,7 @@ def load(data: str):
 
 puzzle = Puzzle(year=2021, day=16)
 ans_a = part_a(load(puzzle.input_data))
-print(ans_a)
-# puzzle.answer_a = ans_a
+# puzzle.answer_a = ans_a  # 984
 
-
-# with open('test.in', 'r') as f:
-#     test = f.read()
-#
-# ans = part_a(load(test)[0])
-# print(ans)
+ans_b = part_b(load(puzzle.input_data))
+# puzzle.answer_b = ans_b  # 1015320896946
