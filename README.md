@@ -21,3 +21,4 @@ My Python implementations of the AoC 2021 challenge 🎄
 | [Day 15: Chiton](https://adventofcode.com/2021/day/15)                  | [day15.py](src/15/day_15.py) |
 | [Day 16: Packet Decoder](https://adventofcode.com/2021/day/16)          | [day16.py](src/16/day_16.py) |
 | [Day 17: Trick Shot](https://adventofcode.com/2021/day/17)              | [day17.py](src/17/day_17.py) |
+| [Day 20: Trench Map](https://adventofcode.com/2021/day/20)              | [day20.py](src/20/day_20.py) |
