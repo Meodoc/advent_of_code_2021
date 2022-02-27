@@ -27,7 +27,6 @@ def part_b(p1_pos: int, p2_pos: int):
     p1_win_cnt, p2_win_cnt = 0, 0
 
     while True:
-        #print("Player 1 plays:")
 
         # player 1 plays
         new_pos_q = []
@@ -37,7 +36,7 @@ def part_b(p1_pos: int, p2_pos: int):
             p1_score, p2_score = score_q[i]
             #print(i, p1_pos, p2_pos)
 
-            new_p1_pos_q = [play_move(p1_pos, roll) for roll in dirac_die]
+            new_p1_pos_q = play_move(p1_pos, 0)
             new_pos_q.extend((new_p1_pos, p2_pos) for new_p1_pos in new_p1_pos_q)
             new_score_q.extend((p1_score + new_p1_pos, p2_score) for new_p1_pos in new_p1_pos_q)
 
@@ -58,16 +57,11 @@ def part_b(p1_pos: int, p2_pos: int):
         pos_q = [pos for i, pos in enumerate(pos_q) if i not in rem_idx]
         score_q = [score for i, score in enumerate(score_q) if i not in rem_idx]
 
-        # for i in rem_idx:
-        #     del pos_q[i]
-        #     del score_q[i]
-
         # for pos in pos_q:
         #     print(pos)
         # for score in score_q:
         #     print(score)
 
-        #print("\nPlayer 2 plays:")
         # player 2 plays
         new_pos_q = []
         new_score_q = []
@@ -76,7 +70,7 @@ def part_b(p1_pos: int, p2_pos: int):
             p1_score, p2_score = score_q[i]
             #print(i, p1_pos, p2_pos)
 
-            new_p2_pos_q = [play_move(p2_pos, roll) for roll in dirac_die]
+            new_p2_pos_q = play_move(p2_pos, 0)
             new_pos_q.extend((p1_pos, new_p2_pos) for new_p2_pos in new_p2_pos_q)
             new_score_q.extend((p1_score, p2_score + new_p2_pos) for new_p2_pos in new_p2_pos_q)
 
@@ -95,9 +89,6 @@ def part_b(p1_pos: int, p2_pos: int):
 
         pos_q = [pos for i, pos in enumerate(pos_q) if i not in rem_idx]
         score_q = [score for i, score in enumerate(score_q) if i not in rem_idx]
-        # for i in rem_idx:
-        #     del pos_q[i]
-        #     del score_q[i]
 
         # for pos in pos_q:
         #     print(pos)
@@ -117,7 +108,8 @@ def play_move(pos: int, die: int, deterministic: bool = False):
             pos = (pos + die) % 10 if (pos + die) % 10 != 0 else 10
         return pos, die
 
-    return (pos + die) % 10 if (pos + die) % 10 != 0 else 10
+    poss_3_roll_dirac_outcomes = (3, 4, 5, 6, 7, 8, 9)
+    return [(pos + die) % 10 if (pos + die) % 10 != 0 else 10 for die in poss_3_roll_dirac_outcomes]
 
 def load(data: str):
     p1_start, p2_start = data.splitlines()
