@@ -30,6 +30,7 @@ def part_b(p1_pos: int, p2_pos: int):
     # 13762205476306
     # 283083829957006
     # 821727078918406
+    # 7177834022997715704785007001530
     # 444356092776315
 
     # 2355241912947
@@ -37,7 +38,6 @@ def part_b(p1_pos: int, p2_pos: int):
     # 336254685904828
     # 993603941564518
     # 341960390180808
-
 
     while True:
         # player 1 plays
@@ -63,6 +63,80 @@ def part_b(p1_pos: int, p2_pos: int):
                 else:
                     new_game_state = ((pos, score), p2)
                     game_states[new_game_state] += amount
+
+            # remove the original game state
+            del game_states[game_state]
+
+
+        print(len(game_states))
+
+        # break if all games are finished
+        if len(game_states) == 0:
+            break
+
+        # player 2 plays
+        old_game_states = game_states.copy()
+        for game_state, amount in old_game_states.items():
+            p1, p2 = game_state
+            p2_pos, p2_score = p2
+
+            # generate all possible new positions for player 2 when rolling 3 times
+            new_p2_pos = [p2_pos]
+            for roll in range(3):
+                old_pos = new_p2_pos.copy()
+                for pos in old_pos:
+                    new_p2_pos.extend(play_move(pos, die) for die in dirac_die)
+                    new_p2_pos.remove(pos)
+
+            # construct the new game states and add the created amount to the total game states
+            for pos in new_p2_pos:
+                # if the new game state is winning, remove it and dont add it to the game states
+                score = p2_score + pos
+                if score >= 21:
+                    p2_win_cnt += amount
+                else:
+                    new_game_state = (p1, (pos, score))
+                    game_states[new_game_state] += amount
+
+            # remove the original game state
+            del game_states[game_state]
+
+        print(len(game_states))
+
+        # break if all games are finished
+        if len(game_states) == 0:
+            break
+
+    print(game_states)
+    print(p1_win_cnt, p2_win_cnt)
+
+
+def old2():
+
+    while True:
+        # player 1 plays
+        old_game_states = game_states.copy()
+        for game_state, amount in old_game_states.items():
+            p1, p2 = game_state
+            p1_pos, p1_score = p1
+
+            # generate all possible new positions for player 1 when rolling 3 times
+            new_p1_pos = [p1_pos]
+            for roll in range(3):
+                old_pos = new_p1_pos.copy()
+                for pos in old_pos:
+                    new_p1_pos.extend(play_move(pos, die) for die in dirac_die)
+                    new_p1_pos.remove(pos)
+
+            # construct the new game states and add the created amount to the total game states
+            for pos in new_p1_pos:
+                # if the new game state is winning, add the score and dont add it to the game states
+                score = p1_score + pos
+                if score >= 21:
+                    p1_win_cnt += amount
+                else:
+                    new_game_state = ((pos, score), p2)
+                    game_states[new_game_state] += (amount * 27)
 
             # remove the original game state
             del game_states[game_state]
@@ -95,7 +169,7 @@ def part_b(p1_pos: int, p2_pos: int):
                     p2_win_cnt += amount
                 else:
                     new_game_state = (p1, (pos, score))
-                    game_states[new_game_state] += amount
+                    game_states[new_game_state] += (amount * 27)
 
             # remove the original game state
             del game_states[game_state]
