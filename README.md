@@ -22,3 +22,4 @@ My Python implementations of the AoC 2021 challenge 🎄
 | [Day 16: Packet Decoder](https://adventofcode.com/2021/day/16)          | [day16.py](src/16/day_16.py) |
 | [Day 17: Trick Shot](https://adventofcode.com/2021/day/17)              | [day17.py](src/17/day_17.py) |
 | [Day 20: Trench Map](https://adventofcode.com/2021/day/20)              | [day20.py](src/20/day_20.py) |
+| [Day 21: Dirac Die](https://adventofcode.com/2021/day/21)               | [day21.py](src/21/day_21.py) |
