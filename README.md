@@ -14,6 +14,7 @@ My Python implementations of the AoC 2021 challenge 🎄
 | [Day 6: Lanternfish](https://adventofcode.com/2021/day/6)               | [day6.py](src/06/day_6.py)   |
 | [Day 7: The Treachery of Whales](https://adventofcode.com/2021/day/7)   | [day7.py](src/07/day_7.py)   |
 | [Day 9: Smoke Basin](https://adventofcode.com/2021/day/9)               | [day9.py](src/09/day_9.py)   |
+| [Day 10: Syntax Scoring](https://adventofcode.com/2021/day/10)          | [day10.py](src/10/day_10.py) |
 | [Day 11: Dumbo Octopus](https://adventofcode.com/2021/day/11)           | [day11.py](src/11/day_11.py) |
 | [Day 12: Passage Pathing](https://adventofcode.com/2021/day/12)         | [day12.py](src/12/day_12.py) |
 | [Day 13: Transparent Origami](https://adventofcode.com/2021/day/13)     | [day13.py](src/13/day_13.py) |
