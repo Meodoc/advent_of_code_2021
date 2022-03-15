@@ -25,3 +25,4 @@ My Python implementations of the AoC 2021 challenge 🎄
 | [Day 17: Trick Shot](https://adventofcode.com/2021/day/17)              | [day17.py](src/17/day_17.py) |
 | [Day 20: Trench Map](https://adventofcode.com/2021/day/20)              | [day20.py](src/20/day_20.py) |
 | [Day 21: Dirac Die](https://adventofcode.com/2021/day/21)               | [day21.py](src/21/day_21.py) |
+| [Day 22: Reactor Reboot](https://adventofcode.com/2021/day/22)          | [day22.py](src/22/day_22.py) |
